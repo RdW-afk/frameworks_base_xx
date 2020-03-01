@@ -383,6 +383,8 @@ oneway interface IStatusBar
 
     void toggleCameraFlash();
 
+    void killForegroundApp();
+
     /** Enters desktop mode.
     *
     * @param displayId the id of the current display.
