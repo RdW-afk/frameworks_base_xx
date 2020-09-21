@@ -2212,6 +2212,21 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                 mDisplayDeviceConfig.getScreenOffBrightnessSensor(), SensorUtils.NO_FALLBACK);
     }
 
+    private void loadProximitySensor() {
+        if (DEBUG_PRETEND_PROXIMITY_SENSOR_ABSENT || mDisplayId != Display.DEFAULT_DISPLAY) {
+            return;
+        }
+        mProximitySensor = SensorUtils.findSensor(mSensorManager,
+                mDisplayDeviceConfig.getProximitySensor(), Sensor.TYPE_PROXIMITY);
+        if (mProximitySensor != null) {
+            mProximityThreshold = Math.min(mProximitySensor.getMaximumRange(),
+                    TYPICAL_PROXIMITY_THRESHOLD);
+            if (Float.isNaN(mProximityThreshold)) {
+                mProximityThreshold = 5.0f;
+            }
+        }
+    }
+
     private float clampScreenBrightness(float value) {
         if (Float.isNaN(value)) {
             value = PowerManager.BRIGHTNESS_MIN;
