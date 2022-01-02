@@ -423,5 +423,6 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.STYLUS_POINTER_ICON_ENABLED, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.CAMERA_EXTENSIONS_FALLBACK, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.STATUS_BAR_CLOCK, new InclusiveIntegerRangeValidator(0, 2));
+        VALIDATORS.put(Secure.TETHERING_ALLOW_VPN_UPSTREAMS, BOOLEAN_VALIDATOR);
     }
 }
